@@ -31,6 +31,7 @@ describe("Tests for the class Queue", () => {
         expect(myQueue.collection).toEqual({ 0: "item1", 1: "item2" });
       });
       test("When the method enQueue is invoked, it should only add to the queue if the collection has not reach the max size", () => {
+        const consoleSpy = jest.spyOn(console, "log");
         myQueue.enQueue("item1");
         myQueue.enQueue("item2");
         myQueue.enQueue("item3");
@@ -44,6 +45,8 @@ describe("Tests for the class Queue", () => {
           3: "item4",
           4: "item5",
         });
+        expect(consoleSpy.mock.calls[0][0]).toBe("Queue is full.");
+        consoleSpy.mockReset();
       });
     });
 
