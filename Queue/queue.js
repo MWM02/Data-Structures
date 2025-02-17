@@ -9,6 +9,8 @@ class Queue {
   enQueue(item) {
     if (this.back < this.maxSize) {
       this.collection[this.back++] = item;
+    } else {
+      console.log("Queue is full.");
     }
   }
 
